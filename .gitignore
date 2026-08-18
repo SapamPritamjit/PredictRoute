@@ -1,0 +1,13 @@
+# Data
+new_delhi_traffic_dataset/
+cleaned/
+GTFS_Data.csv
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+*.egg-info/
+.env
+venv/
+.venv/
