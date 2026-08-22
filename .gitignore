@@ -11,3 +11,12 @@ __pycache__/
 .env
 venv/
 .venv/
+
+#file
+fixes_next_steps_models.txt
+process_done.txt
+
+# models
+catboost_model.pkl
+lgb_model.pkl
+xgb_model.pkl
