@@ -15,6 +15,9 @@ venv/
 #file
 fixes_next_steps_models.txt
 process_done.txt
+.env
+.env.example
+*txt
 
 # models
 lgb_model.pkl
