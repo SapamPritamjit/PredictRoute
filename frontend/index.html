@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>PredictRoute — Delhi Routing</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <!-- ═══════════════ PAGE 1: Route Planning ═══════════════ -->
+  <div id="planning-view">
+    <header>
+      <h1>PredictRoute</h1>
+      <p class="subtitle">Delhi congestion-aware routing</p>
+    </header>
+
+    <div class="controls-wrap">
+      <div class="coverage-notice">
+        Supports <strong>Delhi/NCR only</strong>.
+        Outside Delhi? Use the demo origin to test.
+      </div>
+
+      <section class="card" id="origin-card">
+        <h2>Origin</h2>
+        <p class="hint" id="origin-hint">Use your browser location, or a Delhi demo point for testing.</p>
+        <div class="origin-buttons">
+          <button id="btn-location" class="btn btn-secondary">Use My Location</button>
+          <button id="btn-demo" class="btn btn-demo">Use Delhi Demo Location</button>
+        </div>
+        <div id="origin-status" class="status hidden"></div>
+      </section>
+
+      <section class="card" id="dest-card">
+        <h2>Destination</h2>
+        <div class="search-wrap">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search for a place (e.g. India Gate, AIIMS, Connaught Place)"
+            autocomplete="off"
+          />
+          <div id="search-spinner" class="spinner hidden"></div>
+        </div>
+        <div id="results-list" class="results-list hidden"></div>
+        <div id="dest-status" class="status hidden"></div>
+      </section>
+
+      <section class="card" id="route-card">
+        <div class="origin-dest-summary">
+          <div class="summary-item">
+            <span class="label">Origin:</span>
+            <span id="summary-origin" class="value">Not set</span>
+          </div>
+          <div class="summary-item">
+            <span class="label">Destination:</span>
+            <span id="summary-dest" class="value">Not set</span>
+          </div>
+        </div>
+        <div class="datetime-row">
+          <label for="datetime-input">Departure:</label>
+          <input type="datetime-local" id="datetime-input" step="3600" />
+          <span class="datetime-hint">Hourly snapshots (minutes = 00)</span>
+        </div>
+        <button id="btn-route" class="btn btn-primary" disabled>Find Route</button>
+        <div id="route-status" class="status hidden"></div>
+      </section>
+    </div>
+
+    <footer>
+      <p>PredictRoute v1 &mdash; Delhi congestion-aware routing</p>
+      <div class="field-test-controls">
+        <button id="btn-export-log" class="btn btn-secondary btn-small">Export test log</button>
+        <button id="btn-clear-log" class="btn btn-secondary btn-small">Clear log</button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ═══════════════ PAGE 2: Navigation / Map ═══════════════ -->
+  <div id="navigation-view" class="hidden">
+    <div id="nav-map"></div>
+
+    <div class="nav-top-bar">
+      <button id="btn-back" class="btn btn-back">&larr; Back</button>
+      <span class="nav-title">PredictRoute</span>
+    </div>
+
+    <div class="nav-bottom-card" id="nav-bottom-card"></div>
+
+    <div class="gps-status hidden" id="gps-status"></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
