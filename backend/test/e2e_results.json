@@ -1,0 +1,337 @@
+[
+  {
+    "name": "1. Normal daytime route (replay, 10:00)",
+    "passed": true,
+    "status_code": 200,
+    "detail": "distance=3.116km | eta=7.0min | mean_ratio=1.0295 | edges=60",
+    "request": {
+      "origin_lat": 28.6315,
+      "origin_lon": 77.2167,
+      "dest_lat": 28.6129,
+      "dest_lon": 77.2295,
+      "departure_datetime": "2024-08-27 10:00",
+      "mode": "replay"
+    }
+  },
+  {
+    "name": "2. Morning rush (08:00)",
+    "passed": true,
+    "status_code": 200,
+    "detail": "distance=8.494km | eta=12.4min | mean_ratio=0.7500 | max_ratio=1.9471 | synthetic=82",
+    "request": {
+      "origin_lat": 28.5687,
+      "origin_lon": 77.2062,
+      "dest_lat": 28.6315,
+      "dest_lon": 77.2167,
+      "departure_datetime": "2024-08-27 08:00",
+      "mode": "replay"
+    }
+  },
+  {
+    "name": "3. Evening rush (18:00)",
+    "passed": true,
+    "status_code": 200,
+    "detail": "distance=6.439km | eta=15.3min | mean_ratio=1.2081 | max_ratio=3.5191",
+    "request": {
+      "origin_lat": 28.6129,
+      "origin_lon": 77.2295,
+      "dest_lat": 28.5687,
+      "dest_lon": 77.2062,
+      "departure_datetime": "2024-08-28 18:00",
+      "mode": "replay"
+    }
+  },
+  {
+    "name": "4. Night (23:00)",
+    "passed": true,
+    "status_code": 200,
+    "detail": "distance=7.805km | eta=9.3min | mean_ratio=0.6089",
+    "request": {
+      "origin_lat": 28.5687,
+      "origin_lon": 77.2062,
+      "dest_lat": 28.6315,
+      "dest_lon": 77.2167,
+      "departure_datetime": "2024-08-29 23:00",
+      "mode": "replay"
+    }
+  },
+  {
+    "name": "5. Forecast mode (2024-09-01 14:00)",
+    "passed": true,
+    "status_code": 200,
+    "detail": "distance=8.920km | eta=23.1min | mean_ratio=1.3249",
+    "request": {
+      "origin_lat": 28.6315,
+      "origin_lon": 77.2167,
+      "dest_lat": 28.5687,
+      "dest_lon": 77.2062,
+      "departure_datetime": "2024-09-01 14:00",
+      "mode": "forecast"
+    }
+  },
+  {
+    "name": "5b. Forecast auto-resolve (no mode)",
+    "passed": true,
+    "status_code": 200,
+    "detail": "status=success distance=8.920km",
+    "request": {
+      "origin_lat": 28.6315,
+      "origin_lon": 77.2167,
+      "dest_lat": 28.5687,
+      "dest_lon": 77.2062,
+      "departure_datetime": "2024-09-01 14:00"
+    }
+  },
+  {
+    "name": "6a. Lat > 90",
+    "passed": true,
+    "status_code": 422,
+    "detail": "detail=[{'type': 'less_than_equal', 'loc': ['body', 'origin_lat'], 'msg': 'Input should be less than or equal to 90', 'input': 91.0, 'ctx': {'le': 90.0}}]",
+    "request": {
+      "origin_lat": 91.0,
+      "origin_lon": 77.2167,
+      "dest_lat": 28.6129,
+      "dest_lon": 77.2295,
+      "departure_datetime": "2024-08-27 10:00",
+      "mode": "replay"
+    }
+  },
+  {
+    "name": "6b. Lat < -90",
+    "passed": true,
+    "status_code": 422,
+    "detail": "detail=[{'type': 'greater_than_equal', 'loc': ['body', 'origin_lat'], 'msg': 'Input should be greater than or equal to -90', 'input': -91.0, 'ctx': {'ge': -90.0}}]",
+    "request": {
+      "origin_lat": -91.0,
+      "origin_lon": 77.2167,
+      "dest_lat": 28.6129,
+      "dest_lon": 77.2295,
+      "departure_datetime": "2024-08-27 10:00",
+      "mode": "replay"
+    }
+  },
+  {
+    "name": "6c. Lon > 180",
+    "passed": true,
+    "status_code": 422,
+    "detail": "detail=[{'type': 'less_than_equal', 'loc': ['body', 'origin_lon'], 'msg': 'Input should be less than or equal to 180', 'input': 181.0, 'ctx': {'le': 180.0}}]",
+    "request": {
+      "origin_lat": 28.6315,
+      "origin_lon": 181.0,
+      "dest_lat": 28.6129,
+      "dest_lon": 77.2295,
+      "departure_datetime": "2024-08-27 10:00",
+      "mode": "replay"
+    }
+  },
+  {
+    "name": "6d. Lon < -180",
+    "passed": true,
+    "status_code": 422,
+    "detail": "detail=[{'type': 'greater_than_equal', 'loc': ['body', 'origin_lon'], 'msg': 'Input should be greater than or equal to -180', 'input': -181.0, 'ctx': {'ge': -180.0}}]",
+    "request": {
+      "origin_lat": 28.6315,
+      "origin_lon": -181.0,
+      "dest_lat": 28.6129,
+      "dest_lon": 77.2295,
+      "departure_datetime": "2024-08-27 10:00",
+      "mode": "replay"
+    }
+  },
+  {
+    "name": "6e. Dest lat > 90",
+    "passed": true,
+    "status_code": 422,
+    "detail": "detail=[{'type': 'less_than_equal', 'loc': ['body', 'dest_lat'], 'msg': 'Input should be less than or equal to 90', 'input': 95.0, 'ctx': {'le': 90.0}}]",
+    "request": {
+      "origin_lat": 28.6315,
+      "origin_lon": 77.2167,
+      "dest_lat": 95.0,
+      "dest_lon": 77.2295,
+      "departure_datetime": "2024-08-27 10:00",
+      "mode": "replay"
+    }
+  },
+  {
+    "name": "6f. Dest lon < -180",
+    "passed": true,
+    "status_code": 422,
+    "detail": "detail=[{'type': 'greater_than_equal', 'loc': ['body', 'dest_lon'], 'msg': 'Input should be greater than or equal to -180', 'input': -200.0, 'ctx': {'ge': -180.0}}]",
+    "request": {
+      "origin_lat": 28.6315,
+      "origin_lon": 77.2167,
+      "dest_lat": 28.6129,
+      "dest_lon": -200.0,
+      "departure_datetime": "2024-08-27 10:00",
+      "mode": "replay"
+    }
+  },
+  {
+    "name": "7a. Origin snap-radius (London)",
+    "passed": true,
+    "status_code": 400,
+    "detail": "detail=Origin: nearest graph node is 6706919 m away, exceeds the 400 m snap radius. This location may be ou",
+    "request": {
+      "origin_lat": 51.5074,
+      "origin_lon": -0.1278,
+      "dest_lat": 28.6315,
+      "dest_lon": 77.2167,
+      "departure_datetime": "2024-08-27 10:00",
+      "mode": "replay"
+    }
+  },
+  {
+    "name": "7b. Dest snap-radius (London)",
+    "passed": true,
+    "status_code": 400,
+    "detail": "detail=Destination: nearest graph node is 6706919 m away, exceeds the 400 m snap radius. This location may ",
+    "request": {
+      "origin_lat": 28.6315,
+      "origin_lon": 77.2167,
+      "dest_lat": 51.5074,
+      "dest_lon": -0.1278,
+      "departure_datetime": "2024-08-27 10:00",
+      "mode": "replay"
+    }
+  },
+  {
+    "name": "7c. Origin snap-radius (ocean)",
+    "passed": true,
+    "status_code": 400,
+    "detail": "detail=Origin: nearest graph node is 3258260 m away, exceeds the 400 m snap radius. This location may be ou",
+    "request": {
+      "origin_lat": 0.0,
+      "origin_lon": 70.0,
+      "dest_lat": 28.6315,
+      "dest_lon": 77.2167,
+      "departure_datetime": "2024-08-27 10:00",
+      "mode": "replay"
+    }
+  },
+  {
+    "name": "8a. Garbage datetime",
+    "passed": true,
+    "status_code": 422,
+    "detail": "detail=Invalid departure datetime: 'not-a-date'",
+    "request": {
+      "origin_lat": 28.6315,
+      "origin_lon": 77.2167,
+      "dest_lat": 28.6129,
+      "dest_lon": 77.2295,
+      "departure_datetime": "not-a-date",
+      "mode": "replay"
+    }
+  },
+  {
+    "name": "8b. Timezone-aware datetime",
+    "passed": true,
+    "status_code": 422,
+    "detail": "detail=Prediction error: naive IST datetimes only (no tz)",
+    "request": {
+      "origin_lat": 28.6315,
+      "origin_lon": 77.2167,
+      "dest_lat": 28.6129,
+      "dest_lon": 77.2295,
+      "departure_datetime": "2024-08-27 10:00+05:30",
+      "mode": "replay"
+    }
+  },
+  {
+    "name": "8c. Non-hourly datetime",
+    "passed": true,
+    "status_code": 422,
+    "detail": "detail=Prediction error: hourly model: departure must be exactly on the hour",
+    "request": {
+      "origin_lat": 28.6315,
+      "origin_lon": 77.2167,
+      "dest_lat": 28.6129,
+      "dest_lon": 77.2295,
+      "departure_datetime": "2024-08-27 10:30",
+      "mode": "replay"
+    }
+  },
+  {
+    "name": "8d. Date before replay start",
+    "passed": true,
+    "status_code": 422,
+    "detail": "detail=Prediction error: rejected: 2024-07-01 precedes first observed date 2024-08-11",
+    "request": {
+      "origin_lat": 28.6315,
+      "origin_lon": 77.2167,
+      "dest_lat": 28.6129,
+      "dest_lon": 77.2295,
+      "departure_datetime": "2024-07-01 10:00",
+      "mode": "replay"
+    }
+  },
+  {
+    "name": "8e. Invalid mode string",
+    "passed": true,
+    "status_code": 422,
+    "detail": "detail=Invalid mode 'walking'; must be 'replay' or 'forecast'",
+    "request": {
+      "origin_lat": 28.6315,
+      "origin_lon": 77.2167,
+      "dest_lat": 28.6129,
+      "dest_lon": 77.2295,
+      "departure_datetime": "2024-08-27 10:00",
+      "mode": "walking"
+    }
+  },
+  {
+    "name": "8f. Replay on forecast date",
+    "passed": true,
+    "status_code": 422,
+    "detail": "detail=mode='replay' is only valid for 2024-08-11..2024-08-30, got 2024-09-05",
+    "request": {
+      "origin_lat": 28.6315,
+      "origin_lon": 77.2167,
+      "dest_lat": 28.6129,
+      "dest_lon": 77.2295,
+      "departure_datetime": "2024-09-05 10:00",
+      "mode": "replay"
+    }
+  },
+  {
+    "name": "8g. Forecast on replay date",
+    "passed": true,
+    "status_code": 422,
+    "detail": "detail=mode='forecast' is only valid from 2024-08-31, got 2024-08-27",
+    "request": {
+      "origin_lat": 28.6315,
+      "origin_lon": 77.2167,
+      "dest_lat": 28.6129,
+      "dest_lon": 77.2295,
+      "departure_datetime": "2024-08-27 10:00",
+      "mode": "forecast"
+    }
+  },
+  {
+    "name": "9. Response contract",
+    "passed": true,
+    "status_code": 200,
+    "detail": "all fields present",
+    "request": {
+      "origin_lat": 28.6315,
+      "origin_lon": 77.2167,
+      "dest_lat": 28.6129,
+      "dest_lon": 77.2295,
+      "departure_datetime": "2024-08-27 10:00",
+      "mode": "replay"
+    }
+  },
+  {
+    "name": "10. Determinism (3 runs)",
+    "passed": true,
+    "status_code": 200,
+    "detail": "all 3 runs identical",
+    "request": {
+      "origin_lat": 28.6129,
+      "origin_lon": 77.2295,
+      "dest_lat": 28.6315,
+      "dest_lon": 77.2167,
+      "departure_datetime": "2024-08-27 08:00",
+      "mode": "replay"
+    }
+  }
+]

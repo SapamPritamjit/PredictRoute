@@ -1,10 +1,14 @@
 import json
 import os
 import sys
+from pathlib import Path
+
 import pandas as pd
 
-SRC_DIR = "new_delhi_traffic_dataset/probe_counts/geojson"
-OUT_DIR = "cleaned"
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+SRC_DIR = str(PROJECT_ROOT / "new_delhi_traffic_dataset" / "probe_counts" / "geojson")
+OUT_DIR = str(PROJECT_ROOT / "cleaned")
 COLS = ["date", "segmentId", "frc", "speedLimit", "distance",
         "timeSet", "hour", "probeCount"]
 
